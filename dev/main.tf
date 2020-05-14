@@ -40,7 +40,6 @@ module "network" {
 }
 
 
-
 module "peering" {
   source = "../modules/vpc-peering"
   accepter_vpc_id = "${data.terraform_remote_state.management.outputs.vpc_id}"
@@ -52,19 +51,4 @@ module "peering" {
   cidr_primary = module.network.vpc_cidr_block
   cidr_secondary = "${data.terraform_remote_state.management.outputs.vpc_cidr}"
 
-  # peering_routes =  [{
-  #   route_table_id = "${data.terraform_remote_state.management.outputs.route_table_private[0]}"
-  #   destination_cidr_block   = module.network.vpc_cidr
-  # },{
-  #   route_table_id = "${data.terraform_remote_state.management.outputs.route_table_public[0]}"
-  #   destination_cidr_block   = module.network.vpc_cidr
-  # },
-  # {
-  #   route_table_id = module.network.route_table_public[0]
-  #   destination_cidr_block   = "${data.terraform_remote_state.management.outputs.vpc_cidr}"
-  # },
-  # {
-  #   route_table_id = module.network.route_table_private[0]
-  #   destination_cidr_block   = "${data.terraform_remote_state.management.outputs.vpc_cidr}"
-  # }]
 }

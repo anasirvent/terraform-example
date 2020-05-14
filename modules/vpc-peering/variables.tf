@@ -8,13 +8,6 @@ variable "requester_vpc_id" {
   type = string
 }
 
-# variable "peering_routes"{
-#  description = "Peering routes for the vpc peering"
-#  type        = list(object({
-#                route_table_id: string,
-#                destination_cidr_block: string
-#                }))
-# }
 
 variable "routes_primary" {
   type = list(string)
